@@ -2,7 +2,28 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { UserContext } from '../App';
 import { SpendingBarChart, SpendingLineChart, SpendingPieChart } from '../component/charts';
-import { getDateRange } from '../../../server/controllers/chartController';
+// import { getDateRange } from '../../../server/controllers/chartController';
+
+const getDateRange = (timeFrame) => {
+  const today = new Date();
+  let startDate;
+
+  switch (timeFrame) {
+    case 'Today':
+      startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      break;
+    case 'This Week':
+      const firstDayOfWeek = today.getDate() - today.getDay();
+      startDate = new Date(today.getFullYear(), today.getMonth(), firstDayOfWeek);
+      break;
+    case 'This Month':
+    default:
+      startDate = new Date(today.getFullYear(), today.getMonth(), 1);
+      break;
+  }
+
+  return { startDate, endDate: today };
+};
 
 const VisualsPage = () => {
   const { userAuth } = useContext(UserContext);
