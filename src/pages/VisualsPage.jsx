@@ -7,7 +7,7 @@ import { getDateRange } from '../../../server/controllers/chartController';
 const VisualsPage = () => {
   const { userAuth } = useContext(UserContext);
   const token = userAuth?.access_token;
-  const baseURL = import.meta.env.VITE_SERVER_DOMAIN;
+  const baseURL = import.meta.env.VITE_BACKEND_URL;
 
   const [categories, setCategories] = useState([]);
 

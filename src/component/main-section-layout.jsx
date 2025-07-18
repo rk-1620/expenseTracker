@@ -23,7 +23,7 @@ const SectionLayout = () => {
   const { userAuth } = useContext(UserContext);
   const token = userAuth?.access_token;
 
-  const baseURL = import.meta.env.VITE_SERVER_DOMAIN;  // e.g., http://localhost:5000
+  const baseURL = import.meta.env.VITE_BACKEND_URL;  // e.g., http://localhost:5000
 
   const apiConfig = {
     ADD_EXPENSE: { url: '/api/expenses/add', method: 'POST' },

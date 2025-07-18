@@ -15,7 +15,7 @@ const Authform = ({type})=>{
     let passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/; // regex for password
 
     const userAuthThroughServer = (serverRoute, formData)=>{
-        axios.post(import.meta.env.VITE_SERVER_DOMAIN + serverRoute, formData)
+        axios.post(import.meta.env.VITE_BACKEND_URL + serverRoute, formData)
         .then(({data})=>{
             storeInSession("user",JSON.stringify(data))
             setUserAuth(data);

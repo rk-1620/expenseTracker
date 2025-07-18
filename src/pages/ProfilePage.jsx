@@ -30,7 +30,7 @@ const ProfilePage = () => {
   const { personal_info: { fullname, username: profile_username, profile_img, bio }, social_links, joinedAt } = profile;
 
   const fetchUserProfile = useCallback(() => {
-    axios.post(`${import.meta.env.VITE_SERVER_DOMAIN}/get-profile`, { username: profileId })
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/get-profile`, { username: profileId })
       .then(({ data: user }) => {
         if (user) {
           setProfile(user);
